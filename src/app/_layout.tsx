@@ -2,7 +2,7 @@ import "../../global.css";
 import { View, Text, LogBox } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SplashScreen, Stack } from "expo-router";
-import AppLoading from 'expo-app-loading';
+import AppLoading from "expo-app-loading";
 import {
   useFonts as useMonoFonts,
   SpaceMono_400Regular,
@@ -11,6 +11,10 @@ import {
   Inter_400Regular,
   useFonts as useInterFonts,
 } from "@expo-google-fonts/inter";
+import {
+  Raleway_600SemiBold,
+  useFonts as useRalewayFonts,
+} from "@expo-google-fonts/raleway";
 
 import {
   KoHo_400Regular,
@@ -35,13 +39,16 @@ const RootLayout = () => {
     KoHo_400Regular,
     KoHo_700Bold,
   });
+  const [RalewayFontloaded] = useRalewayFonts({
+    Raleway_600SemiBold,
+  });
 
   // Hide splash screen when both fonts are loaded
   useEffect(() => {
-    if (spaceMonoLoaded && interLoaded && kohoFontloaded) {
+    if (spaceMonoLoaded && interLoaded && kohoFontloaded && RalewayFontloaded) {
       SplashScreen.hideAsync();
     }
-  }, [spaceMonoLoaded, interLoaded, kohoFontloaded]);
+  }, [spaceMonoLoaded, interLoaded, kohoFontloaded, RalewayFontloaded]);
 
   // Disable all logs
   useEffect(() => {
@@ -49,7 +56,12 @@ const RootLayout = () => {
   }, []);
 
   // Show an empty view until fonts are loaded
-  if (!spaceMonoLoaded || !interLoaded || !kohoFontloaded) {
+  if (
+    !spaceMonoLoaded ||
+    !interLoaded ||
+    !kohoFontloaded ||
+    !RalewayFontloaded
+  ) {
     return <AppLoading />;
   }
 

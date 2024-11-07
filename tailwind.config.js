@@ -15,7 +15,8 @@ module.exports = {
       fontFamily: {
         spaceMono: ["SpaceMono_400Regular", "monospace"],
         inter: ["Inter_400Regular", "sans-serif"],
-        koho: ["KoHo_400Regular", "KoHo_700Bold"],
+        koho: ["KoHo_400Regular", "monospace"],
+        raleway: ["Raleway_600SemiBold", "monospace"],
       },
     },
   },

@@ -1,7 +1,7 @@
 import LottieView from "lottie-react-native";
 import React, { useRef } from "react";
 
-const Lottie = () => {
+const Lottie = ({ src }: { src: any }) => {
   const animation = useRef<LottieView>(null);
   return (
     <LottieView
@@ -11,7 +11,7 @@ const Lottie = () => {
         width: 350,
         height: 350,
       }}
-      source={require("../../../assets/animation.json")}
+      source={src}
       loop
     />
   );

@@ -5,3 +5,8 @@ type onbaordingSwiperdata = {
   sortdesc: string;
   img: any;
 };
+
+interface ILogin {
+  email: string,
+  password: string,
+}
