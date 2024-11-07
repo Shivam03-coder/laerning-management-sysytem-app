@@ -1,7 +1,7 @@
 import "../../global.css";
 import { View, Text, LogBox } from "react-native";
 import React, { useEffect, useState } from "react";
-import { SplashScreen } from "expo-router";
+import { SplashScreen, Stack } from "expo-router";
 import {
   useFonts as useMonoFonts,
   SpaceMono_400Regular,
@@ -68,7 +68,10 @@ const RootNavLayout = () => {
           </Text>
         </View>
       ) : (
-        <Onboarding />
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="index" />
+          <Stack.Screen name="(app-routes)/appintro" />
+        </Stack>
       )}
     </>
   );

@@ -15,7 +15,12 @@ const Typewrittereffect = () => {
 
   return (
     <>
-      <Text className="text-4xl  uppercase text-primary font-bold">QuokkaHub</Text>
+      <Text className="text-4xl  uppercase text-primary font-bold">
+        Quokka-Hub
+      </Text>
+      <Text className="text-2xl opacity-70   text-primary font-bold">
+        A Student Management Tool.
+      </Text>
       <TypeWriter
         typing={typing}
         initialDelay={500}
