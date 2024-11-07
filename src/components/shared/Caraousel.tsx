@@ -1,19 +1,20 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, Image } from "react-native";
 import React from "react";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { swiperdata } from "@/helpers";
 import { router } from "expo-router";
+import { commonstyles } from "@/styles";
 
 const Caraousel = () => {
   const renderItem = ({ item }: { item: onbaordingSwiperdata }) => {
     return (
-      <View className="flex-1 w-[95%] mx-auto justify-center items-center mt-5">
+      <View className="flex-1 w-[95%] mx-auto  items-center mt-2">
         <Image className="w-full" resizeMode="contain" source={item.img} />
-        <View className="flex justify-center gap-4 py-4">
-          <Text className=" w-full text-justify text-2xl font-bold text-primary font-inter">
+        <View className="flex justify-center gap-4 py-2 px-2">
+          <Text className="w-full underline underline-offset-4 text-justify text-3xl font-bold text-primary font-koho">
             {item.title}
           </Text>
-          <Text className="p-3 text-justify text-2xl font-semibold text-primary font-inter">
+          <Text className="p-3 text-justify text-2xl font-bold  opacity-80 text-primary font-inter">
             {item.desc}
           </Text>
         </View>
@@ -28,25 +29,35 @@ const Caraousel = () => {
       showSkipButton={false}
       dotStyle={commonstyles.dotStyle}
       activeDotStyle={commonstyles.ActivedotStyle}
+      bottomButton
+      onDone={() => {
+        router.push("/auth/login");
+      }}
+      onSkip={() => {
+        router.push("/auth/login");
+      }}
+      renderNextButton={() => (
+        <View
+          style={commonstyles.buttonContainer}
+          className="mx-auto mb-5 bg-primary font-inter rounded-2xl "
+        >
+          <Text className="text-secondary text-3xl text-center font-semibold">
+            NEXT
+          </Text>
+        </View>
+      )}
+      renderDoneButton={() => (
+        <View
+          style={commonstyles.buttonContainer}
+          className="mx-auto mb-5 bg-primary font-inter rounded-2xl "
+        >
+          <Text className="text-secondary text-3xl text-center font-semibold">
+            DONE
+          </Text>
+        </View>
+      )}
     />
   );
 };
 
 export default Caraousel;
-
-const commonstyles = StyleSheet.create({
-  dotStyle: {
-    backgroundColor: "#ffffff",
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    marginHorizontal: 5,
-  },
-  ActivedotStyle: {
-    backgroundColor: "#001f3f",
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    marginHorizontal: 5,
-  },
-});

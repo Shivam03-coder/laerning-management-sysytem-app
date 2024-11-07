@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  presets: [require("nativewind/preset")], // NativeWind preset for Tailwind CSS
+  presets: [require("nativewind/preset")],
   theme: {
     extend: {
       colors: {
@@ -15,7 +15,7 @@ module.exports = {
       fontFamily: {
         spaceMono: ["SpaceMono_400Regular", "monospace"],
         inter: ["Inter_400Regular", "sans-serif"],
-        koho: ["KoHo_400Regular", "sans-serif"],
+        koho: ["KoHo_400Regular", "KoHo_700Bold"],
       },
     },
   },

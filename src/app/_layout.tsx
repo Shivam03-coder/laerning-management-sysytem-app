@@ -2,6 +2,7 @@ import "../../global.css";
 import { View, Text, LogBox } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SplashScreen, Stack } from "expo-router";
+import AppLoading from 'expo-app-loading';
 import {
   useFonts as useMonoFonts,
   SpaceMono_400Regular,
@@ -10,14 +11,14 @@ import {
   Inter_400Regular,
   useFonts as useInterFonts,
 } from "@expo-google-fonts/inter";
-import Onboarding from "./(app-routes)/onboarding";
+
 import {
   KoHo_400Regular,
+  KoHo_700Bold,
   useFonts as useKohoFonts,
 } from "@expo-google-fonts/koho";
 export { ErrorBoundary } from "expo-router";
 
-// Prevent splash screen from hiding until fonts are loaded
 SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
@@ -31,7 +32,8 @@ const RootLayout = () => {
   });
 
   const [kohoFontloaded] = useKohoFonts({
-    Inter_400Regular,
+    KoHo_400Regular,
+    KoHo_700Bold,
   });
 
   // Hide splash screen when both fonts are loaded
@@ -48,7 +50,7 @@ const RootLayout = () => {
 
   // Show an empty view until fonts are loaded
   if (!spaceMonoLoaded || !interLoaded || !kohoFontloaded) {
-    return <View />;
+    return <AppLoading />;
   }
 
   return <RootNavLayout />;
