@@ -11,6 +11,10 @@ import {
   useFonts as useInterFonts,
 } from "@expo-google-fonts/inter";
 import Onboarding from "./(app-routes)/onboarding";
+import {
+  KoHo_400Regular,
+  useFonts as useKohoFonts,
+} from "@expo-google-fonts/koho";
 export { ErrorBoundary } from "expo-router";
 
 // Prevent splash screen from hiding until fonts are loaded
@@ -26,12 +30,16 @@ const RootLayout = () => {
     Inter_400Regular,
   });
 
+  const [kohoFontloaded] = useKohoFonts({
+    Inter_400Regular,
+  });
+
   // Hide splash screen when both fonts are loaded
   useEffect(() => {
-    if (spaceMonoLoaded && interLoaded) {
+    if (spaceMonoLoaded && interLoaded && kohoFontloaded) {
       SplashScreen.hideAsync();
     }
-  }, [spaceMonoLoaded, interLoaded]);
+  }, [spaceMonoLoaded, interLoaded, kohoFontloaded]);
 
   // Disable all logs
   useEffect(() => {
@@ -39,7 +47,7 @@ const RootLayout = () => {
   }, []);
 
   // Show an empty view until fonts are loaded
-  if (!spaceMonoLoaded || !interLoaded) {
+  if (!spaceMonoLoaded || !interLoaded || !kohoFontloaded) {
     return <View />;
   }
 

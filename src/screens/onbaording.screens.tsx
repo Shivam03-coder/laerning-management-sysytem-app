@@ -1,20 +1,22 @@
 import Lottie from "@/components/layout/(onboarding)/lottie";
+import Typewrittereffect from "@/components/shared/Typewrittereffect";
 import { LinearGradient } from "expo-linear-gradient";
-import { Button, Text } from "react-native";
+import { Button, Pressable, Text } from "react-native";
 import { View } from "react-native";
 
 const OnboardingScreens = () => {
   return (
-    <LinearGradient
-      colors={["#E5ECF9", "#F6F7F9"]}
-      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-    >
+    <View className="flex-1 gap-7  w-[90%] mx-auto justify-center items-center">
       <Lottie />
-      <View className="space-x-7">
-        <Text className="text-4xl text-blue-950 font-bold"> L-M-S </Text>
+      <View className="flex items-center py-5 gap-3  w-full">
+        <Typewrittereffect />
       </View>
-      <Button color={"red"} title="contINUE" />
-    </LinearGradient>
+      <Pressable className="bg-primary w-full mx-auto rounded-3xl py-5 text-light">
+        <Text className="text-light  text-center text-3xl font-bold font-inter">
+          CONTINUE
+        </Text>
+      </Pressable>
+    </View>
   );
 };
 
